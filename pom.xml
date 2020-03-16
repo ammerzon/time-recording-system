@@ -20,80 +20,104 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <artifactId>junit</artifactId>
-      <groupId>junit</groupId>
-      <scope>test</scope>
-      <version>${junit.version}</version>
-    </dependency>
 
-    <dependency>
-      <artifactId>hibernate-core</artifactId>
-      <groupId>org.hibernate</groupId>
-      <version>${hibernate.version}</version>
-    </dependency>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <artifactId>junit</artifactId>
+        <groupId>junit</groupId>
+        <scope>test</scope>
+        <version>${junit.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <groupId>org.hibernate</groupId>
-      <version>${hibernate.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>javax.annotation-api</artifactId>
+        <groupId>javax.annotation</groupId>
+        <version>${javax-annotation.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>slf4j-log4j12</artifactId>
-      <groupId>org.slf4j</groupId>
-      <version>${slf4j.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>hibernate-core</artifactId>
+        <groupId>org.hibernate</groupId>
+        <version>${hibernate.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>derbyshared</artifactId>
-      <groupId>org.apache.derby</groupId>
-      <scope>runtime</scope>
-      <version>${derby.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <groupId>org.hibernate</groupId>
+        <version>${hibernate.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>derby</artifactId>
-      <groupId>org.apache.derby</groupId>
-      <scope>runtime</scope>
-      <version>${derby.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>hibernate-jpamodelgen</artifactId>
+        <groupId>org.hibernate</groupId>
+        <scope>compile</scope>
+        <version>${hibernate.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>derbyclient</artifactId>
-      <groupId>org.apache.derby</groupId>
-      <scope>runtime</scope>
-      <version>${derby.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>slf4j-log4j12</artifactId>
+        <groupId>org.slf4j</groupId>
+        <version>${slf4j.version}</version>
+      </dependency>
 
-    <!-- includes the embedded JDBC driver -->
-    <dependency>
-      <artifactId>derbytools</artifactId>
-      <groupId>org.apache.derby</groupId>
-      <scope>runtime</scope>
-      <version>${derby.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>derbyshared</artifactId>
+        <groupId>org.apache.derby</groupId>
+        <scope>runtime</scope>
+        <version>${derby.version}</version>
+      </dependency>
 
-    <!-- needed when using Java >= 9 -->
-    <dependency>
-      <artifactId>jaxb-api</artifactId>
-      <groupId>javax.xml.bind</groupId>
-      <version>${jaxb.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>derby</artifactId>
+        <groupId>org.apache.derby</groupId>
+        <scope>runtime</scope>
+        <version>${derby.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>jaxb-core</artifactId>
-      <groupId>com.sun.xml.bind</groupId>
-      <version>${jaxb-core.version}</version>
-    </dependency>
+      <dependency>
+        <artifactId>derbyclient</artifactId>
+        <groupId>org.apache.derby</groupId>
+        <scope>runtime</scope>
+        <version>${derby.version}</version>
+      </dependency>
 
-    <dependency>
-      <artifactId>jaxb-impl</artifactId>
-      <groupId>com.sun.xml.bind</groupId>
-      <version>${jaxb.version}</version>
-    </dependency>
-  </dependencies>
+      <!-- includes the embedded JDBC driver -->
+      <dependency>
+        <artifactId>derbytools</artifactId>
+        <groupId>org.apache.derby</groupId>
+        <scope>runtime</scope>
+        <version>${derby.version}</version>
+      </dependency>
+
+      <!-- needed when using Java >= 9 -->
+      <dependency>
+        <artifactId>jaxb-api</artifactId>
+        <groupId>javax.xml.bind</groupId>
+        <version>${jaxb.version}</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>jaxb-core</artifactId>
+        <groupId>com.sun.xml.bind</groupId>
+        <version>${jaxb-core.version}</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>jaxb-impl</artifactId>
+        <groupId>com.sun.xml.bind</groupId>
+        <version>${jaxb.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <groupId>com.ammerzon</groupId>
   <modelVersion>4.0.0</modelVersion>
   <modules>

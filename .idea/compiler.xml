@@ -11,7 +11,7 @@
         <sourceOutputDir name="target/generated-sources/apt" />
         <sourceTestOutputDir name="target/generated-sources/apt-test" />
         <outputRelativeToContentRoot value="true" />
-        <processor name="org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor" />
+        <processor name="lombok.launch.AnnotationProcessorHider$AnnotationProcessor,org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor" />
         <module name="time-recording-persistence" />
       </profile>
       <profile name="Annotation profile for time-recording-system" enabled="true">
