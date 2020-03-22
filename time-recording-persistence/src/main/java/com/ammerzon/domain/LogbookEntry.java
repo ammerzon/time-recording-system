@@ -2,6 +2,8 @@ package com.ammerzon.domain;
 
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -17,6 +19,11 @@ public class LogbookEntry {
   private LocalDateTime startTime;
 
   @ManyToOne private Employee employee;
+
+  @ManyToOne private Project project;
+
+  @Enumerated(EnumType.STRING)
+  private CostType costType;
 
   public void attachEmployee(Employee employee) {
     if (this.employee != null) {

@@ -2,10 +2,12 @@ package com.ammerzon.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -15,10 +17,17 @@ public class Project {
 
   private String name;
 
-  @ManyToMany private Set<Employee> members = new HashSet<>();
+  @ManyToOne private Customer customer;
 
-  public void addMember(Employee employee) {
-    employee.getProjects().add(this);
-    this.members.add(employee);
+  @OneToMany(mappedBy = "project", cascade = CascadeType.MERGE)
+  private Set<LogbookEntry> logbookEntries = new HashSet<>();
+
+  public void addLogbookEntry(LogbookEntry entry) {
+    if (entry.getProject() != null) {
+      entry.getProject().getLogbookEntries().remove(entry);
+    }
+
+    this.logbookEntries.add(entry);
+    entry.setProject(this);
   }
 }
