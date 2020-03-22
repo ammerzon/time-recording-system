@@ -1,4 +1,4 @@
-package com.ammerzon.domain;
+package com.ammerzon.model;
 
 public enum CostType {
   DEVELOPMENT,

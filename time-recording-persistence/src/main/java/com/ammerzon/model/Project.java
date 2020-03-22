@@ -1,4 +1,4 @@
-package com.ammerzon.domain;
+package com.ammerzon.model;
 
 import java.util.HashSet;
 import java.util.Set;

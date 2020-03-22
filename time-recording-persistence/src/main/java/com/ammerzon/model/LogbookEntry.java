@@ -1,4 +1,4 @@
-package com.ammerzon.domain;
+package com.ammerzon.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.Entity;

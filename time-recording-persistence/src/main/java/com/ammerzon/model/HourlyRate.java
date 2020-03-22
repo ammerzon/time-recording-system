@@ -1,4 +1,4 @@
-package com.ammerzon.domain;
+package com.ammerzon.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
@@ -17,4 +17,6 @@ public class HourlyRate {
   private Position position;
 
   private LocalDateTime year;
+
+  private double amount;
 }

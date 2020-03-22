@@ -1,4 +1,4 @@
-package com.ammerzon.domain;
+package com.ammerzon.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
