@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Data
+@NoArgsConstructor
 @ToString(exclude = {"logbookEntries"})
 public class Employee {
   @Id @GeneratedValue private Long id;

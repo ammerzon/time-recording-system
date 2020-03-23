@@ -27,9 +27,8 @@
 
   <dependencies>
     <dependency>
-      <artifactId>picocli</artifactId>
       <groupId>info.picocli</groupId>
-      <version>${picocli.version}</version>
+      <artifactId>picocli-shell-jline2</artifactId>
     </dependency>
   </dependencies>
 

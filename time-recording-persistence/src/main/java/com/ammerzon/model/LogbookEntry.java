@@ -8,9 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class LogbookEntry {
   @Id @GeneratedValue private Long id;
 
@@ -35,5 +37,17 @@ public class LogbookEntry {
     }
 
     this.employee = employee;
+  }
+
+  public void attachProject(Project project) {
+    if (this.project != null) {
+      this.project.getLogbookEntries().remove(this);
+    }
+
+    if (project != null) {
+      project.getLogbookEntries().add(this);
+    }
+
+    this.project = project;
   }
 }
