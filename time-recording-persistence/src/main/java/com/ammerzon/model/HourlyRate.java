@@ -1,11 +1,12 @@
 package com.ammerzon.model;
 
 import java.time.LocalDateTime;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,10 +16,11 @@ import lombok.NoArgsConstructor;
 public class HourlyRate {
   @Id @GeneratedValue private Long id;
 
-  @Enumerated(EnumType.STRING)
-  private Position position;
-
+  @Column(name = "hourlyRateYear")
   private LocalDateTime year;
 
   private double amount;
+
+  @ManyToOne
+  private Position position;
 }

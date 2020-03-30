@@ -1,5 +1,6 @@
 package com.ammerzon.repository;
 
+import com.ammerzon.interceptor.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ public interface Repository<T, ID> {
    *
    * @return the number of entities.
    */
+  @Transactional
   long count();
 
   /**
@@ -19,6 +21,7 @@ public interface Repository<T, ID> {
    * @param entity - must not be null.
    * @return the saved entity; will never be null.
    */
+  @Transactional
   T save(T entity);
 
   /**
@@ -28,6 +31,7 @@ public interface Repository<T, ID> {
    * @return the saved entities; will never be null. The returned Iterable will have the same size
    *     as the Iterable passed as an argument.
    */
+  @Transactional
   Iterable<T> saveAll(Iterable<T> entities);
 
   /**
@@ -35,6 +39,7 @@ public interface Repository<T, ID> {
    *
    * @param id - must not be null.
    */
+  @Transactional
   void deleteById(ID id);
 
   /**
@@ -42,6 +47,7 @@ public interface Repository<T, ID> {
    *
    * @param entity - must not be null.
    */
+  @Transactional
   void delete(T entity);
 
   /**
@@ -50,6 +56,7 @@ public interface Repository<T, ID> {
    * @param id - must not be null.
    * @return The entity with the given id or Optional#empty() if none found.
    */
+  @Transactional
   Optional<T> findById(ID id);
 
   /**
@@ -57,5 +64,6 @@ public interface Repository<T, ID> {
    *
    * @return all entities
    */
+  @Transactional
   List<T> findAll();
 }

@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
+import org.hibernate.Session;
 
 public abstract class DbRepository<T, ID> implements Repository<T, ID> {
 
+  protected EntityManager entityManager;
   private Class<T> clazz;
-  private EntityManager entityManager;
 
   public DbRepository(Class<T> clazz, EntityManager entityManager) {
     this.clazz = clazz;
@@ -24,7 +25,9 @@ public abstract class DbRepository<T, ID> implements Repository<T, ID> {
 
   @Override
   public T save(T entity) {
-    return entityManager.merge(entity);
+    Session session = entityManager.unwrap(Session.class);
+    session.saveOrUpdate(entity);
+    return entity;
   }
 
   @Override
@@ -47,7 +50,7 @@ public abstract class DbRepository<T, ID> implements Repository<T, ID> {
 
   @Override
   public Optional<T> findById(ID id) {
-    return Optional.of(entityManager.find(clazz, id));
+    return Optional.ofNullable(entityManager.find(clazz, id));
   }
 
   @Override

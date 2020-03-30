@@ -1,5 +1,6 @@
 package com.ammerzon.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class Customer {
   @Id @GeneratedValue private long id;
 
-  @OneToOne private Address address;
+  @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  private Address address;
 
   private String name;
 

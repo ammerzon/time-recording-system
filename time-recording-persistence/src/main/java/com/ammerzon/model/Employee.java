@@ -5,19 +5,23 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(exclude = {"logbookEntries"})
 @ToString(exclude = {"logbookEntries"})
 public class Employee {
   @Id @GeneratedValue private Long id;
@@ -28,12 +32,15 @@ public class Employee {
 
   private LocalDate dateOfBirth;
 
-  @Enumerated(EnumType.STRING)
+  @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   private Position position;
 
-  @OneToOne private Address address;
+  @OneToOne(cascade = CascadeType.ALL)
+  private Address address;
 
-  @OneToMany(mappedBy = "employee", cascade = CascadeType.MERGE)
+  @Fetch(FetchMode.SELECT)
+  @OneToMany(mappedBy = "employee", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+      fetch = FetchType.LAZY, orphanRemoval = true)
   private Set<LogbookEntry> logbookEntries = new HashSet<>();
 
   public void addLogbookEntry(LogbookEntry entry) {

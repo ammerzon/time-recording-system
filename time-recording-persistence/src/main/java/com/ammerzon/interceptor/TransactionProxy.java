@@ -23,17 +23,18 @@ public class TransactionProxy implements InvocationHandler {
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     Object result = null;
-    EntityManager entityManager = entityManagerStore.createAndRegister();
+    EntityManager entityManager = entityManagerStore.get();
     EntityTransaction entityTransaction = entityManager.getTransaction();
 
-    if (!method.isAnnotationPresent(Transactional.class)
-        && !proxy.getClass().isAnnotationPresent(Transactional.class))
+    if (!method.isAnnotationPresent(Transactional.class))
       return method.invoke(invocationTarget, args);
 
     try {
+      System.out.printf("--> starting transaction (%s)%n", method.getName());
       entityTransaction.begin();
       result = method.invoke(invocationTarget, args);
       entityTransaction.commit();
+      System.out.printf("<-- ending transaction (%s)%n", result.getClass().getName());
     } catch (Exception ex) {
       try {
         if (entityTransaction.isActive()) {
@@ -43,8 +44,6 @@ public class TransactionProxy implements InvocationHandler {
       } catch (Exception e1) {
         logger.warn("Rollback of transaction failed: " + e1);
       }
-    } finally {
-      entityManager.close();
     }
 
     return result;

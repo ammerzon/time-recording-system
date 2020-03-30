@@ -1,18 +1,26 @@
 package com.ammerzon.model;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Cacheable
 public class LogbookEntry {
   @Id @GeneratedValue private Long id;
 
@@ -20,12 +28,25 @@ public class LogbookEntry {
 
   private LocalDateTime startTime;
 
-  @ManyToOne private Employee employee;
+  private LocalDateTime endTime;
 
-  @ManyToOne private Project project;
+  private double duration;
+
+  @Fetch(FetchMode.SELECT)
+  @ManyToOne(fetch = FetchType.EAGER)
+  private Employee employee;
+
+  @ManyToOne
+  private Project project;
 
   @Enumerated(EnumType.STRING)
   private CostType costType;
+
+  @PrePersist
+  private void calcDuration() {
+    var diff = Duration.between(startTime, endTime);
+    duration = diff.toHoursPart() + diff.toMinutesPart() / 60.0;
+  }
 
   public void attachEmployee(Employee employee) {
     if (this.employee != null) {

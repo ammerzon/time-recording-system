@@ -28,7 +28,44 @@
   <dependencies>
     <dependency>
       <groupId>info.picocli</groupId>
-      <artifactId>picocli-shell-jline2</artifactId>
+      <artifactId>picocli-shell-jline3</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jline</groupId>
+      <artifactId>jline</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jline</groupId>
+      <artifactId>jline-terminal-jansi</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.fusesource.jansi</groupId>
+      <artifactId>jansi</artifactId>
+    </dependency>
+
+    <dependency>
+      <artifactId>derbyclient</artifactId>
+      <groupId>org.apache.derby</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>derbytools</artifactId>
+      <groupId>org.apache.derby</groupId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.ammerzon</groupId>
+      <artifactId>time-recording-persistence</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 

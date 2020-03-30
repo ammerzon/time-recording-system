@@ -96,7 +96,6 @@
         <version>${derby.version}</version>
       </dependency>
 
-      <!-- needed when using Java >= 9 -->
       <dependency>
         <artifactId>jaxb-api</artifactId>
         <groupId>javax.xml.bind</groupId>
@@ -130,8 +129,32 @@
 
       <dependency>
         <groupId>info.picocli</groupId>
-        <artifactId>picocli-shell-jline2</artifactId>
+        <artifactId>picocli-shell-jline3</artifactId>
         <version>${picocli.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jline</groupId>
+        <artifactId>jline</artifactId>
+        <version>${jline.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jline</groupId>
+        <artifactId>jline-terminal-jansi</artifactId>
+        <version>${jline.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.fusesource.jansi</groupId>
+        <artifactId>jansi</artifactId>
+        <version>${jansi.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.reflections</groupId>
+        <artifactId>reflections</artifactId>
+        <version>${reflection.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -146,6 +169,10 @@
   <packaging>pom</packaging>
 
   <properties>
+    <reflection.version>0.9.12</reflection.version>
+    <jansi.version>1.18</jansi.version>
+    <jline.version>3.14.0</jline.version>
+    <picocli.version>4.2.0</picocli.version>
     <derby.version>10.15.2.0</derby.version>
     <hsqldb.version>2.5.0</hsqldb.version>
     <exec-plugin.version>1.6.0</exec-plugin.version>

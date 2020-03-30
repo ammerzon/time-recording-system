@@ -5,14 +5,16 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
   <persistence-unit name="TimeRecordingPU">
+    <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+
     <properties>
       <property name="hibernate.archive.autodetection" value="class"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.url"
         value="jdbc:derby://localhost/TimeRecordingDb;create=true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="create"/>
-      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.format_sql" value="false"/>
     </properties>
   </persistence-unit>
