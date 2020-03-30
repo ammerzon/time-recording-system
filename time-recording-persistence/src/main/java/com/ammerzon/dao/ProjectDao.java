@@ -2,8 +2,6 @@ package com.ammerzon.dao;
 
 import com.ammerzon.interceptor.Transactional;
 import com.ammerzon.model.CostType;
-import com.ammerzon.model.Employee;
-import com.ammerzon.model.Position;
 import com.ammerzon.model.Project;
 import com.ammerzon.repository.Repository;
 import java.time.LocalDateTime;

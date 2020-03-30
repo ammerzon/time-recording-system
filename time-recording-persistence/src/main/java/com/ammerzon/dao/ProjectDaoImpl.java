@@ -1,12 +1,9 @@
 package com.ammerzon.dao;
 
 import com.ammerzon.model.CostType;
-import com.ammerzon.model.Employee;
 import com.ammerzon.model.Employee_;
-import com.ammerzon.model.HourlyRate;
 import com.ammerzon.model.HourlyRate_;
 import com.ammerzon.model.LogbookEntry_;
-import com.ammerzon.model.Position;
 import com.ammerzon.model.Position_;
 import com.ammerzon.model.Project;
 import com.ammerzon.model.Project_;
@@ -38,7 +35,10 @@ public class ProjectDaoImpl extends DbRepository<Project, Long> implements Proje
     builder.lessThan(logbookEntryJoin.get(LogbookEntry_.endTime), to);
     builder.equal(rootProject.get(Project_.id), project.getId());
 
-    query.groupBy(logbookEntryJoin.get(LogbookEntry_.costType),employeeJoin.get(Employee_.id), hourlyRateJoin.get(HourlyRate_.amount));
+    query.groupBy(
+        logbookEntryJoin.get(LogbookEntry_.costType),
+        employeeJoin.get(Employee_.id),
+        hourlyRateJoin.get(HourlyRate_.amount));
 
     query.multiselect(
         logbookEntryJoin.get(LogbookEntry_.costType),
@@ -80,7 +80,10 @@ public class ProjectDaoImpl extends DbRepository<Project, Long> implements Proje
     builder.lessThan(logbookEntryJoin.get(LogbookEntry_.endTime), to);
     builder.equal(rootProject.get(Project_.id), project.getId());
 
-    query.groupBy(positionJoin.get(Position_.id),employeeJoin.get(Employee_.id), hourlyRateJoin.get(HourlyRate_.amount));
+    query.groupBy(
+        positionJoin.get(Position_.id),
+        employeeJoin.get(Employee_.id),
+        hourlyRateJoin.get(HourlyRate_.amount));
 
     query.multiselect(
         positionJoin.get(Position_.id),

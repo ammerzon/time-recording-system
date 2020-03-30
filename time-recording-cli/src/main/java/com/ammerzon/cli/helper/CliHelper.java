@@ -198,7 +198,8 @@ public class CliHelper {
                     + Arrays.toString(field.getType().getEnumConstants())
                     + ") > ");
 
-            var enumValue = Enum.valueOf((Class<Enum>) field.getType(), in.nextLine().toUpperCase());
+            var enumValue =
+                Enum.valueOf((Class<Enum>) field.getType(), in.nextLine().toUpperCase());
             field.set(entity, enumValue);
           } else if (!Collection.class.isAssignableFrom(field.getType())) {
             // Handle objects

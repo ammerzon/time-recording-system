@@ -12,10 +12,8 @@ import com.ammerzon.model.Project;
 import com.ammerzon.repository.Repository;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
 
 @Command(
@@ -26,11 +24,8 @@ import picocli.CommandLine.ParentCommand;
     description = "Command to insert test data",
     subcommands = CommandLine.HelpCommand.class)
 public class InsertTestDataCommand implements Runnable {
-  private DateTimeFormatter formatter =
-      DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-  @ParentCommand
-  CliCommands parent;
+  @ParentCommand CliCommands parent;
+  private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
   @SuppressWarnings("unchecked")
   public void run() {
@@ -41,7 +36,8 @@ public class InsertTestDataCommand implements Runnable {
 
   private Project generateTestProject() {
     Repository<Employee, Long> employeeDaoProxy = CliHelper.getRepositoryProxy(Entity.Employee);
-    Repository<LogbookEntry, Long> logbookDaoProxy = CliHelper.getRepositoryProxy(Entity.LogbookEntry);
+    Repository<LogbookEntry, Long> logbookDaoProxy =
+        CliHelper.getRepositoryProxy(Entity.LogbookEntry);
     var customer = new Customer();
     customer.setName("Customer1");
 

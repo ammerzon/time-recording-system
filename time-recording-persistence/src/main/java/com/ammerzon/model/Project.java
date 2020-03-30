@@ -26,7 +26,9 @@ public class Project {
   @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   private Customer customer;
 
-  @OneToMany(mappedBy = "project", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @OneToMany(
+      mappedBy = "project",
+      cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   private Set<LogbookEntry> logbookEntries = new HashSet<>();
 
   public void addLogbookEntry(LogbookEntry entry) {

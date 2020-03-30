@@ -6,14 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.ammerzon.helper.EntityManagerStore;
 import com.ammerzon.helper.EntityManagerStoreImpl;
 import com.ammerzon.helper.TransactionHelper;
-import com.ammerzon.model.CostType;
 import com.ammerzon.model.Customer;
 import com.ammerzon.model.Employee;
-import com.ammerzon.model.HourlyRate;
 import com.ammerzon.model.LogbookEntry;
-import com.ammerzon.model.Position;
 import com.ammerzon.model.Project;
-import com.ammerzon.repository.Repository;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -26,8 +22,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ProjectDaoTests {
-  private DateTimeFormatter formatter =
-      DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+  private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
   private EntityManagerStore entityManagerStore;
   private TransactionHelper helper;
   private EntityManager entityManager;
@@ -144,8 +139,7 @@ public class ProjectDaoTests {
     project.setName("Project1");
     var projectId = new AtomicLong();
 
-    helper.transactional(
-        () -> projectId.set(projectDao.save(project).getId()));
+    helper.transactional(() -> projectId.set(projectDao.save(project).getId()));
 
     helper.transactional(
         () -> {

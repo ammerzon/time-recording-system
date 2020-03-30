@@ -48,28 +48,29 @@ public class GetCostsCommand implements Runnable {
           var costsByCostType =
               proxy.getCostsByCostType(project.get(), LocalDateTime.MIN, LocalDateTime.MAX);
           System.out.println("Costs grouped by cost type: ");
-          costsByCostType.forEach((costType, cost) -> System.out
-              .printf("%s: %s€%n", costType.name(), cost));
+          costsByCostType.forEach(
+              (costType, cost) -> System.out.printf("%s: %s€%n", costType.name(), cost));
           break;
         case POSITION:
           var costsByPosition =
               proxy.getCostsByPosition(project.get(), LocalDateTime.MIN, LocalDateTime.MAX);
           System.out.println("Costs grouped by position: ");
-          costsByPosition.forEach((id, cost) -> {
-            var position = (Position) positionDao.findById(id).get();
-            System.out
-                .printf("%s: %s€%n", position.getDescription(), cost);
-          });
+          costsByPosition.forEach(
+              (id, cost) -> {
+                var position = (Position) positionDao.findById(id).get();
+                System.out.printf("%s: %s€%n", position.getDescription(), cost);
+              });
           break;
         case EMPLOYEE:
           var costsByEmployee =
               proxy.getCostsByEmployee(project.get(), LocalDateTime.MIN, LocalDateTime.MAX);
           System.out.println("Costs grouped by employee: ");
-          costsByEmployee.forEach((id, cost) -> {
-            var employee = (Employee) employeeDao.findById(id).get();
-            System.out
-                .printf("%s %s: %s€%n", employee.getFirstName(), employee.getLastName(), cost);
-          });
+          costsByEmployee.forEach(
+              (id, cost) -> {
+                var employee = (Employee) employeeDao.findById(id).get();
+                System.out.printf(
+                    "%s %s: %s€%n", employee.getFirstName(), employee.getLastName(), cost);
+              });
           break;
       }
     } else {

@@ -36,7 +36,8 @@ public class UpdateCommand implements Runnable {
     Repository proxy = CliHelper.getRepositoryProxy(entityType);
     Optional<Object> entity = proxy.findById(id);
     if (entity.isPresent()) {
-      Object updatedEntity = CliHelper.readValuesForEntity(entity.get(), CliHelper.getClass(entityType));
+      Object updatedEntity =
+          CliHelper.readValuesForEntity(entity.get(), CliHelper.getClass(entityType));
       Object savedEntity = proxy.save(updatedEntity);
       System.out.printf("Entity %s updated successfully!%n", savedEntity);
     } else {

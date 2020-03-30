@@ -39,8 +39,11 @@ public class Employee {
   private Address address;
 
   @Fetch(FetchMode.SELECT)
-  @OneToMany(mappedBy = "employee", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-      fetch = FetchType.LAZY, orphanRemoval = true)
+  @OneToMany(
+      mappedBy = "employee",
+      cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+      fetch = FetchType.LAZY,
+      orphanRemoval = true)
   private Set<LogbookEntry> logbookEntries = new HashSet<>();
 
   public void addLogbookEntry(LogbookEntry entry) {

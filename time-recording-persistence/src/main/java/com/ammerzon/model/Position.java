@@ -21,7 +21,9 @@ import lombok.ToString;
 public class Position {
   @Id @GeneratedValue private Long id;
 
-  @OneToMany(mappedBy = "position", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @OneToMany(
+      mappedBy = "position",
+      cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   private Set<HourlyRate> hourlyRates = new HashSet<>();
 
   @Column(unique = true)

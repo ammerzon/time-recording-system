@@ -1,7 +1,6 @@
 package com.ammerzon.model;
 
 import java.time.LocalDateTime;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +20,5 @@ public class HourlyRate {
 
   private double amount;
 
-  @ManyToOne
-  private Position position;
+  @ManyToOne private Position position;
 }

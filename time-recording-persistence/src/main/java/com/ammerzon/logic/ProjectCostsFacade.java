@@ -3,7 +3,6 @@ package com.ammerzon.logic;
 import com.ammerzon.interceptor.Transactional;
 import com.ammerzon.model.CostType;
 import com.ammerzon.model.Customer;
-import com.ammerzon.model.Position;
 import java.time.LocalDateTime;
 import java.util.Map;
 

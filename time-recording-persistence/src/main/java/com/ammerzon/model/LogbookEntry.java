@@ -3,7 +3,6 @@ package com.ammerzon.model;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,8 +35,7 @@ public class LogbookEntry {
   @ManyToOne(fetch = FetchType.EAGER)
   private Employee employee;
 
-  @ManyToOne
-  private Project project;
+  @ManyToOne private Project project;
 
   @Enumerated(EnumType.STRING)
   private CostType costType;

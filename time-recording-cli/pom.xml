@@ -27,23 +27,23 @@
 
   <dependencies>
     <dependency>
-      <groupId>info.picocli</groupId>
       <artifactId>picocli-shell-jline3</artifactId>
+      <groupId>info.picocli</groupId>
     </dependency>
 
     <dependency>
-      <groupId>org.jline</groupId>
       <artifactId>jline</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>org.jline</groupId>
-      <artifactId>jline-terminal-jansi</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>org.fusesource.jansi</groupId>
+      <artifactId>jline-terminal-jansi</artifactId>
+      <groupId>org.jline</groupId>
+    </dependency>
+
+    <dependency>
       <artifactId>jansi</artifactId>
+      <groupId>org.fusesource.jansi</groupId>
     </dependency>
 
     <dependency>
@@ -57,15 +57,15 @@
     </dependency>
 
     <dependency>
-      <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
+      <groupId>org.reflections</groupId>
     </dependency>
 
     <dependency>
-      <groupId>com.ammerzon</groupId>
       <artifactId>time-recording-persistence</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <groupId>com.ammerzon</groupId>
       <scope>compile</scope>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
